@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+import sys
+import psutil
+import os
+try:
+    print(sys.argv[1])  ## checking if an arguments are not empty
+    if sys.argv[1] == "ram":
+        virt = psutil.virtual_memory() 
+        swap = psutil.swap_memory()
+        print('virtual total' + ' ' + str(virt[0]) )
+        print('virtual used' + ' ' + str(virt[3]))
+        print('virtual free' + ' ' + str(virt[4]))
+        print('virtual shared' + ' ' + str(virt[9]))
+        print('swap total' + ' ' + str(swap[0]))
+        print('swap used' + ' ' + str(swap[1]))
+        print('swap free' + ' ' + str(swap[2]))
+    elif sys.argv[1] == "cpu":
+        print(sys.argv[1])
+        cpu=psutil.cpu_times()
+        print('system.cpu.idle' + ' ' + str(cpu[3]) )
+        print('system.cpu.user' + ' ' + str(cpu[0]) )
+        print('system.cpu.guest' + ' ' + str(cpu[8]) )
+        print('system.cpu.iowait' + ' ' + str(cpu[4]) )
+        print('system.cpu.stolen' + ' ' + str(cpu[7]) )
+        print('system.cpu.system' + ' ' + str(cpu[2]) )
+    elif sys.argv[1] == "top":
+        print('top')
+        os.system('ps aux --sort=-pcpu|head -6')
+    else: 
+        print("USAGE: pls enter some command argument - 'cpu', 'ram' or 'top'")
+except:
+    print("USAGE: pls enter some command argument - 'cpu', 'ram' or 'top'")

@@ -24,7 +24,7 @@ or lets imagine somewhere in parallel universe you have a linux server with inst
 
 2) Build an image from Dockerfile and run docker container which already contains all necessary packages. Docker service should be installed and started:
 
-docker build -t your_image_name:your_image_tag .
+docker build -t metrics:latest .
 
 docker run -v /proc:/proc -v /etc/passwd:/etc/passwd -it --rm metrics python3 metrics cpu   #to get CPU-related information
 
@@ -48,3 +48,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 License
 
 MIT
+
